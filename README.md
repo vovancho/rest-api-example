@@ -8,6 +8,7 @@
 
 Запрос | Параметры | Описание
 --- | --- | ---
+`POST http://api.rest.local/auth2/token` | `{"grant_type":"password", "username":"admin", "password":"123456", "client_id":"testclient", "client_secret":"testpass"}` | Авторизация по OAUTH2. Логин `admin`. Пароль `123456`.
 `GET http://api.rest.local/products` | | Вывести список продуктов
 `POST http://api.rest.local/products` | `name` - Наименование продукта <BR> `price` - Стоимость продукта | Добавить новый продукт
 `PUT http://api.rest.local/products/{productId}` | `productId` - ИД продукта <BR> `name` - Наименование продукта <BR> `price` - Стоимость продукта | Изменить запись продукта с ИД `productId`
