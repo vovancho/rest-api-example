@@ -15,6 +15,6 @@
 
 ### Документация API на [Swagger](https://swagger.io/)
 
-`http://api.rest.local/products/docs/index.html`
+`http://api.rest.local/docs/index.html`
 
 ![Example REST](https://github.com/vovancho/rest-api-example/blob/master/project/swagger.jpg)
