@@ -79,7 +79,7 @@ Text:
 Response:
 ```json
 {  
-   "access_token":"18e4d2f2b4bcf7f37a93d1fc8334cffbf0c8331f", /* access_token */
+   "access_token":"18e4d2f2b4bcf7f37a93d1fc8334cffbf0c8331f",
    "expires_in":86400,
    "token_type":"Bearer",
    "scope":null,
