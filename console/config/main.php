@@ -25,7 +25,7 @@ return [
             'interactive' => false,
             'migrationPath' => [
                 '@console/migrations',
-                '@vendor/filsh/yii2-oauth2-server/migrations',
+              //  '@vendor/filsh/yii2-oauth2-server/migrations',
             ],
         ],
     ],

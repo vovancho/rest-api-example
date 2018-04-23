@@ -17,8 +17,8 @@ use yii\web\BadRequestHttpException;
 /**
  * @SWG\Swagger(
  *     basePath="/",
- *     host="api.rest.local",
- *     schemes={"http"},
+ *     host="api.restapi.local",
+ *     schemes={"https"},
  *     produces={"application/json","application/xml"},
  *     consumes={"application/json","application/xml"},
  *     @SWG\Info(
@@ -30,7 +30,7 @@ use yii\web\BadRequestHttpException;
  *         securityDefinition="OAuth2",
  *         type="oauth2",
  *         flow="password",
- *         tokenUrl="http://api.rest.local/oauth2/token"
+ *         tokenUrl="https://api.restapi.local/oauth2/token"
  *     ),
  *     @SWG\SecurityScheme(
  *         securityDefinition="Bearer",

@@ -49,6 +49,8 @@ return [
     'components' => [
         'user' => [
             'identityClass' => 'common\models\UserAPI',
+            'enableAutoLogin' => false,
+            'enableSession' => false,
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -70,6 +72,9 @@ return [
                 'PUT products/<id:\d+>' => 'product/update',
                 'DELETE products/<id:\d+>' => 'product/delete',
             ],
+        ],
+        'request' => [
+            'enableCookieValidation' => false,
         ],
     ],
     'params' => $params,

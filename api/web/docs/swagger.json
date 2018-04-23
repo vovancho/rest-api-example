@@ -5,10 +5,10 @@
         "description": "HTTP JSON API",
         "version": "1.0.0"
     },
-    "host": "api.rest.local",
+    "host": "api.restapi.local",
     "basePath": "/",
     "schemes": [
-        "http"
+        "https"
     ],
     "consumes": [
         "application/json",
@@ -154,7 +154,7 @@
         "OAuth2": {
             "type": "oauth2",
             "flow": "password",
-            "tokenUrl": "http://api.rest.local/oauth2/token"
+            "tokenUrl": "https://api.restapi.local/oauth2/token"
         },
         "Bearer": {
             "type": "apiKey",

@@ -1,0 +1,55 @@
+version: '2'
+services:
+    nginx:
+        build:
+            context: ./
+            dockerfile: docker/nginx.docker
+        volumes:
+            - ./:/var/www
+            - ./docker/nginx/ssl:/etc/nginx/ssl
+        ports:
+            - "443:443"
+            - "80:80"
+        links:
+            - php-fpm
+    php-fpm:
+        build:
+            context: ./
+            dockerfile: docker/php-fpm.docker
+        volumes:
+            - ./:/var/www
+            - ./logs/php-fpm/:/tmp/xdebug_log
+        ports:
+            - "9001:9001"
+        expose:
+            - 9001
+        links:
+            - mysql
+        env_file:
+            - variables.env
+        environment:
+            XDEBUG_CONFIG: "remote_host=192.168.1.100"
+            PHP_IDE_CONFIG: "serverName=docker"
+            DB_PORT: 3306
+            DB_HOST: mysql
+    php-cli:
+        build:
+            context: ./
+            dockerfile: docker/php-cli.docker
+        volumes:
+            - ./:/var/www
+        links:
+            - mysql
+        environment:
+            - "DB_PORT=3306"
+            - "DB_HOST=mysql"
+        tty: true
+    mysql:
+        image: mysql:5.7
+        command: "--innodb_use_native_aio=0 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci"
+        volumes:
+            - ./docker/mysql:/var/lib/mysql
+        env_file:
+            - variables.env
+        ports:
+            - "33061:3306"
