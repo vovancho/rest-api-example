@@ -1,0 +1,24 @@
+sudo: required
+
+language: php
+
+php:
+  - 7.2
+
+services:
+  - docker
+
+# cache vendor dirs
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+install:
+  - travis_retry composer self-update && composer --version
+  - travis_retry composer update --dev --prefer-dist --no-interaction
+before_script:
+  - docker-compose up -d
+  - docker-compose exec php-cli php init --env=Development --overwrite=All
+  - docker-compose exec php-cli php yii_test migrate
+script:
+  - docker-compose exec php-cli vendor/bin/codecept run api -c api
