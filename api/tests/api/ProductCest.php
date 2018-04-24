@@ -26,7 +26,7 @@ class ProductCest
             'username' => 'admin',
             'password' => '123456',
             'client_id' => 'testclient',
-            'client_secret' => 'testpass'
+            'client_secret' => 'testpass',
         ]);
 
         $this->token = $I->grabDataFromResponseByJsonPath('$.access_token')[0];
