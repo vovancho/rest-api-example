@@ -21,6 +21,6 @@ before_script:
   - sleep 15
   - docker container ls -a
   - docker-compose exec -T php-cli php init --env=Development --overwrite=All
-script:
   - docker-compose exec -T php-cli php yii_test migrate
-  - docker-compose exec -T php-cli vendor/bin/codecept run api -c api --debug
+script:
+  - docker-compose exec -T php-cli vendor/bin/codecept run api -c api

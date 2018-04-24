@@ -1,4 +1,4 @@
-Пример REST приложения
+## Пример REST приложения [![Build Status](https://travis-ci.org/vovancho/rest-api-example.svg?branch=master)](https://travis-ci.org/vovancho/rest-api-example)
 
 ### rest.local
 
