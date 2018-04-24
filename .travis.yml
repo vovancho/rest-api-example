@@ -21,4 +21,4 @@ before_script:
   - docker-compose exec php-cli php init --env=Development --overwrite=All
   - docker-compose exec php-cli php yii_test migrate
 script:
-  - docker-compose exec php-cli vendor/bin/codecept run api -c api
+  - docker-compose exec php-cli vendor/bin/codecept run api -c api --debug

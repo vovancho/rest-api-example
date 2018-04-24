@@ -107,3 +107,14 @@ Accept        | application/json
 Cache-Control | no-cache
 Content-Type  | application/json
 Authorization | Bearer bff80282a641796870cd5f7de10a8224e7f70e21 `(access_token)`
+
+### Тесты
+
+Запуск `api` тестов:
+
+```bash
+    docker-compose up -d
+    docker-compose exec php-cli php init --env=Development --overwrite=All
+    docker-compose exec php-cli php yii_test migrate
+    docker-compose exec php-cli vendor/bin/codecept run api -c api
+```
