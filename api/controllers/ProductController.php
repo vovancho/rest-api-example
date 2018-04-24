@@ -99,9 +99,9 @@ class ProductController extends BaseController
     public function actionCreate()
     {
         $form = new ProductForm();
-        if ($form->load(Yii::$app->request->getQueryParams(), '')
-            && $form->validate()
-        ) {
+        $form->load(Yii::$app->request->post(), '');
+
+        if ($form->validate()) {
             try {
                 $this->service->create($form);
                 Yii::$app->getResponse()->setStatusCode(201);
@@ -109,6 +109,7 @@ class ProductController extends BaseController
                 throw new BadRequestHttpException($e->getMessage(), null, $e);
             }
         } else {
+            Yii::$app->getResponse()->setStatusCode(400);
             return $form->errors;
         }
     }
@@ -149,10 +150,9 @@ class ProductController extends BaseController
     {
         $product = $this->service->find($id);
         $form = new ProductForm($product);
+        $form->load(Yii::$app->request->post(), '');
 
-        if ($form->load(Yii::$app->request->getQueryParams(), '')
-            && $form->validate()
-        ) {
+        if ($form->validate()) {
             try {
                 $this->service->update($id, $form);
                 Yii::$app->getResponse()->setStatusCode(200);
@@ -160,6 +160,7 @@ class ProductController extends BaseController
                 throw new BadRequestHttpException($e->getMessage(), null, $e);
             }
         } else {
+            Yii::$app->getResponse()->setStatusCode(400);
             return $form->errors;
         }
     }

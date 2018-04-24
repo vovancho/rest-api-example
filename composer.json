@@ -26,7 +26,9 @@
         "yiisoft/yii2-faker": "~2.0.0",
         "codeception/base": "^2.2.3",
         "codeception/verify": "~0.3.1",
-        "zircote/swagger-php": "^2.0"
+        "zircote/swagger-php": "^2.0",
+        "codeception/codeception": "^2.4",
+        "flow/jsonpath": "^0.3.4",
     },
     "config": {
         "process-timeout": 1800,

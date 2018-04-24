@@ -6,7 +6,7 @@ return yii\helpers\ArrayHelper::merge(
     [
         'components' => [
             'db' => [
-                'dsn' => 'mysql:host=' . (getenv('DB_HOST') ?: 'localhost') . ';dbname=' . (getenv('MYSQL_DATABASE_TEST') ?: 'restapi_test'),
+                'dsn' => 'mysql:host=' . (getenv('DB_HOST_TEST') ?: 'localhost') . ';dbname=' . (getenv('MYSQL_DATABASE_TEST') ?: 'restapi_test'),
             ]
         ],
     ]

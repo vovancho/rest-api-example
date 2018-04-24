@@ -12,6 +12,11 @@ services:
             - "80:80"
         links:
             - php-fpm
+            - php-cli
+        networks:
+            default:
+                aliases:
+                    - test.api.restapi.local
     php-fpm:
         build:
             context: ./
@@ -32,6 +37,7 @@ services:
             PHP_IDE_CONFIG: "serverName=docker"
             DB_PORT: 3306
             DB_HOST: mysql
+            DB_HOST_TEST: mysql-test
     php-cli:
         build:
             context: ./
@@ -40,9 +46,11 @@ services:
             - ./:/var/www
         links:
             - mysql
+            - mysql-test
         environment:
             - "DB_PORT=3306"
             - "DB_HOST=mysql"
+            - "DB_HOST_TEST=mysql-test"
         tty: true
     mysql:
         image: mysql:5.7
@@ -51,5 +59,18 @@ services:
             - ./docker/mysql:/var/lib/mysql
         env_file:
             - variables.env
+        environment:
+            - "MYSQL_DATABASE=restapi"
         ports:
             - "33061:3306"
+    mysql-test:
+        image: mysql:5.7
+        command: "--innodb_use_native_aio=0 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci"
+        volumes:
+            - ./docker/mysql-test:/var/lib/mysql
+        env_file:
+            - variables.env
+        environment:
+            - "MYSQL_DATABASE=restapi_test"
+        ports:
+            - "33062:3306"
