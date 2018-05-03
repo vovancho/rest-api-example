@@ -71,6 +71,7 @@ return [
                 'POST products' => 'product/create',
                 'PUT products/<id:\d+>' => 'product/update',
                 'DELETE products/<id:\d+>' => 'product/delete',
+                'GET products/<id:\d+>' => 'product/view',
             ],
         ],
         'request' => [

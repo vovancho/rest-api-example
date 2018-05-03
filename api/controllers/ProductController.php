@@ -145,6 +145,10 @@ class ProductController extends BaseController
      *     ),
      *     security={{"Bearer": {}, "OAuth2": {}}}
      * )
+     *
+     * @param $id int ИД продукта
+     * @return array
+     * @throws BadRequestHttpException
      */
     public function actionUpdate($id)
     {
@@ -165,6 +169,34 @@ class ProductController extends BaseController
         }
     }
 
+
+    /**
+     * @SWG\Get(
+     *     path="/products/{productId}",
+     *     description="Вывод продукта с определенным идентификатором",
+     *     @SWG\Parameter(
+     *         description="ИД продукта",
+     *         in="path",
+     *         name="productId",
+     *         required=true,
+     *         type="integer",
+     *     ),
+     *     @SWG\Response(
+     *         response=200,
+     *         description="Success response",
+     *         @SWG\Schema(ref="#/definitions/Product"),
+     *     ),
+     *     security={{"Bearer": {}, "OAuth2": {}}}
+     * )
+     *
+     * @param $id int ИД продукта
+     * @return \domain\models\Product|\yii\db\ActiveRecord
+     */
+    public function actionView($id)
+    {
+        return $this->service->find($id);
+    }
+
     /**
      * @SWG\Delete(
      *     path="/products/{productId}",
@@ -182,6 +214,9 @@ class ProductController extends BaseController
      *     ),
      *     security={{"Bearer": {}, "OAuth2": {}}}
      * )
+     *
+     * @param $id int ИД продукта
+     * @throws BadRequestHttpException
      */
     public function actionDelete($id)
     {

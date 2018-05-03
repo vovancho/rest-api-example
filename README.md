@@ -8,15 +8,16 @@
 
 Запрос | Параметры | Описание
 --- | --- | ---
-`POST http://api.rest.local/oauth2/token` | `{"grant_type":"password", "username":"admin", "password":"123456", "client_id":"testclient", "client_secret":"testpass"}` | Авторизация по OAuth2. Логин `admin`. Пароль `123456`.
-`GET http://api.rest.local/products` | | Вывести список продуктов
-`POST http://api.rest.local/products` | `name` - Наименование продукта <BR> `price` - Стоимость продукта | Добавить новый продукт
-`PUT http://api.rest.local/products/{productId}` | `productId` - ИД продукта <BR> `name` - Наименование продукта <BR> `price` - Стоимость продукта | Изменить запись продукта с ИД `productId`
-`DELETE http://api.rest.local/products/{productId}` | `productId` - ИД продукта | Удалить запись продукта с ИД `productId`
+`POST https://api.rest.local/oauth2/token` | `{"grant_type":"password", "username":"admin", "password":"123456", "client_id":"testclient", "client_secret":"testpass"}` | Авторизация по OAuth2. Логин `admin`. Пароль `123456`.
+`GET https://api.rest.local/products` | | Вывести список продуктов
+`POST https://api.rest.local/products` | `name` - Наименование продукта <BR> `price` - Стоимость продукта | Добавить новый продукт
+`PUT https://api.rest.local/products/{productId}` | `productId` - ИД продукта <BR> `name` - Наименование продукта <BR> `price` - Стоимость продукта | Изменить запись продукта с ИД `productId`
+`DELETE https://api.rest.local/products/{productId}` | `productId` - ИД продукта | Удалить запись продукта с ИД `productId`
+`GET https://api.rest.local/products/{productId}` | `productId` - ИД продукта | Вывести запись продукта с ИД `productId`
 
 ### Документация API на [Swagger](https://swagger.io/)
 
-`http://api.rest.local/docs/index.html`
+`https://api.rest.local/docs/index.html`
 
 ![Example REST](https://github.com/vovancho/rest-api-example/blob/master/project/swagger.jpg)
 
@@ -44,8 +45,8 @@
 
 ```
     docker-compose up -d
-    docker-compose exec -T php-cli php init
-    docker-compose exec -T php-cli php yii migrate   
+    docker-compose exec php-cli php init
+    docker-compose exec php-cli php yii migrate   
 ```
 
 #### Hosts
@@ -84,18 +85,6 @@ Response:
    "token_type":"Bearer",
    "scope":null,
    "refresh_token":"cbf38fdeefb170913768521b3b4c4317ad77dea8"
-}
-```
-
-Добавление продукта:
-
-POST https://api.restapi.local/products
-
-Text:
-```json
-{  
-   "name":"Продукт 1",
-   "price":"5000"
 }
 ```
 

@@ -59,6 +59,21 @@ class ProductCest
         $I->seeResponseCodeIs(200);
     }
 
+    public function getProductTest(ApiTester $I)
+    {
+        $I->amBearerAuthenticated($this->token);
+
+        $I->sendGET('/products/1');
+
+        $I->seeResponseContainsJson([
+            'id' => 1,
+            'name' => 'Продукт 1',
+            'price' => '6500.0000',
+        ]);
+
+        $I->seeResponseCodeIs(200);
+    }
+
     public function addProductTest(ApiTester $I)
     {
         $I->amBearerAuthenticated($this->token);
@@ -71,7 +86,8 @@ class ProductCest
         $I->seeResponseCodeIs(201);
     }
 
-    public function addBadProduct(ApiTester $I) {
+    public function addBadProduct(ApiTester $I)
+    {
         $I->amBearerAuthenticated($this->token);
 
         $I->sendPOST('/products');
@@ -88,17 +104,18 @@ class ProductCest
     {
         $I->amBearerAuthenticated($this->token);
 
-        $I->sendPUT('/products/1',[
+        $I->sendPUT('/products/1', [
             'price' => 5500,
         ]);
 
         $I->seeResponseCodeIs(200);
     }
 
-    public function badEditProductTest(ApiTester $I) {
+    public function badEditProductTest(ApiTester $I)
+    {
         $I->amBearerAuthenticated($this->token);
 
-        $I->sendPUT('/products/1',[
+        $I->sendPUT('/products/1', [
             'price' => '1 dollar',
         ]);
 
