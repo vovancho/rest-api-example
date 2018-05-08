@@ -1,4 +1,4 @@
-## Пример REST приложения [![Build Status](https://travis-ci.org/vovancho/rest-api-example.svg?branch=master)](https://travis-ci.org/vovancho/rest-api-example)
+## Пример REST приложения на Yii2 [![Build Status](https://travis-ci.org/vovancho/rest-api-example.svg?branch=master)](https://travis-ci.org/vovancho/rest-api-example)
 
 ### rest.local
 
